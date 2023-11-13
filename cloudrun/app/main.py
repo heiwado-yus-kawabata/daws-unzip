@@ -54,7 +54,6 @@ def unzip_and_upload(src_zipfile: str):
                 csv_writer.writerow(row)
 
         # リネーム
-        logging.info(f"########:{src_file_name}")
         org_file_name = src_file_name.split("/")[1].split(".tsv_")
         dst_file_name = f"{org_file_name[0]}_{org_file_name[1]}.csv"
 
