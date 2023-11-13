@@ -35,14 +35,20 @@ def unzip_and_upload(src_zipfile: str):
     with open(dst_zipfile, "wb") as f:
         blob.download_to_file(f)
 
+    # 処理済みファイルリスト
+    file_list = []
     zf = zipfile.ZipFile(dst_zipfile, "r")
+    for tag in zf.filelist:
+        file_list.append(tag.filename)
+    zf.close()
 
     # 1ファイルずつunzip
     dst_bucket = client.bucket(BUCKET_DST)
-    for src_file in zf.filelist:
+    for src_file_name in file_list:
 
-        src_file_name = src_file.filename
+        zf = zipfile.ZipFile(dst_zipfile, "r")
         zf.extract(src_file_name)
+        zf.close()
 
         # tsv→csvへ変換してtmpファイルへ出力
         tmp_file_name = f"tmp_{str(uuid.uuid4())}.csv"
