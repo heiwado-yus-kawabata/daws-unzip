@@ -5,7 +5,7 @@ import os
 import zipfile
 import uuid
 
-from zipstream_new import ZipFile
+from zipstream-new import ZipFile
 
 import google.cloud.logging
 import logging
