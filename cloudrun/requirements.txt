@@ -1,0 +1,5 @@
+fastapi
+fsspec
+gcsfs
+google-cloud-logging
+google-cloud-storage
