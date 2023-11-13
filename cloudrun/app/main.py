@@ -47,7 +47,7 @@ def unzip_and_upload(src_zipfile: str):
         # tsv→csvへ変換してtmpファイルへ出力
         tmp_file_name = f"tmp_{str(uuid.uuid4())}.csv"
 
-        with open(src_file_name, "r") as in_file, open(tmp_file_name, "w", newline="") as out_file:
+        with open(src_file_name, "r", encoding="CP932") as in_file, open(tmp_file_name, "w", newline="") as out_file:
             tsv_reader = csv.reader(in_file, delimiter='\t')
             csv_writer = csv.writer(out_file, delimiter=',')
             for row in tsv_reader:
