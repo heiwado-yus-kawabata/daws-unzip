@@ -40,7 +40,7 @@ def unzip_and_upload(src_zipfile: str):
 
         # gcsへアップロード
         dst_blob = bucket.blob(src_file_name)
-        dst_blob.upload_from_filename(src_file_name)
+        dst_blob.upload_from_filename(f"/output/{src_file_name}")
 
         # 後片付け
         os.remove(src_file_name)
